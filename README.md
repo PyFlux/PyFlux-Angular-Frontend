@@ -6,7 +6,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 change `serverUrl` in `src/environments/environment.prod.ts` ::
 
-	serverUrl: 'http://devapi.vidhyadhan.in'
+	serverUrl: 'http://'
 
 make production build::
 
