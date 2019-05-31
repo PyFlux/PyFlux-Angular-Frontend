@@ -1,0 +1,59 @@
+<div class="row">
+  <div class="col-md-6 col-xs-12">
+    <div class="x_panel">
+      <h2>User Details</h2>
+    </div>
+  </div>
+  <div class="col-md-6 col-xs-12">
+    <div class="x_panel">
+      <div class="pull-right">
+        <a class="btn btn-primary" [routerLink]="'/dashboard/users/'"><i class="fa fa-users"></i> Users</a>
+        <a class="btn btn-success" [routerLink]="'/dashboard/users/add'"><i class="fa fa-user-plus"></i> Add New User</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+
+    <div *ngIf="loading==false" class="x_panel">
+      <div class="x_title">
+        <h2>{{user.username}} Details</h2>
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content">
+        <div class="row">
+          <div class="col-md-6 col-sm-6 col-xs-12 profile_details">
+            <div class="well profile_view">
+              <div class="col-sm-12">
+                <h4 class="brief"><i>{{user.username}}</i></h4>
+                <div class="left col-xs-7">
+                  <h2>{{user.first_name}} {{user.last_name}}</h2>
+                  <ul class="list-unstyled">
+                    <li><i class="fa fa-envelope"></i> Email: {{user.email}} </li>
+                    <li><i class="fa fa-id-badge"></i> User Id #: {{user.id}} </li>
+                    <li>Status:
+                      <span *ngIf="user.is_active"><i class="fa fa-check"></i> Active</span>
+                      <span *ngIf="!user.is_active"><i class="fa fa-times"></i> Inactive</span>
+                    </li>
+
+                  </ul>
+                </div>
+              </div>
+              <div class="col-xs-12 bottom text-center">
+                <div class="col-xs-12 col-sm-6 emphasis">
+                  <button type="button" class="btn btn-danger btn-xs">  <i class="fa fa-trash"></i> </button>
+                  <button type="button" class="btn btn-primary btn-xs" [routerLink]="['/dashboard/users/edit/', user.id]">
+                    <i class="fa fa-user"> </i> Edit User
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,40 @@
+<!-- <app-organization-menu></app-organization-menu> -->
+<div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+      <h2>Organization Details</h2>
+      <div class="clearfix"></div>
+
+      <div class="x_content">
+        <div class="col-md-9 col-sm-9 col-xs-12">
+          <div class="profile_title">
+            <div class="col-md-6">
+              <h2>{{organization.org_name}}</h2>
+            </div>
+            <div class="col-md-6">
+              <a class="btn btn-success" [routerLink]="['/systemconfig/organization/edit/', organization.id]"><i class="fa fa-edit m-right-xs"></i> Edit </a>
+            </div>
+          </div>
+          <div style="padding: 20px">
+            <div class="col-md-6">
+              <ul class="list-inline widget_tally">
+                <li><strong>Name:</strong> {{organization.org_name}} </li>
+                <li><strong>Alias:</strong> {{organization.org_alias}}</li>
+                <li><strong>Address Line 1: </strong>{{organization.org_address_line1}}</li>
+                <li><strong>Address Line 2: </strong>{{organization.org_address_line2}}</li>
+                <li><strong>Phone: </strong>{{organization.org_phone}}</li>
+                <li><strong>Email Id: </strong>{{organization.org_email}}</li>
+                <li><strong>Website: </strong>{{organization.org_website}}</li>
+                <li><strong>Logo: </strong>{{organization.org_logo}}</li>
+                <li><strong>Logo Type: </strong>{{organization.org_logo_type}}</li>
+                <li><strong>Status: </strong>{{organization.status}}</li>
+                <li><strong>Updated at: </strong>{{organization.updated_at|date:'mediumDate'}}</li>
+                <li><strong>Updated by: </strong>{{organization.updated_by}}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

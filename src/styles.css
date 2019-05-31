@@ -1,0 +1,39 @@
+/* You can add global styles to this file, and also import other style files */
+/*@import "assests/custom.min.css";
+@import "https://colorlib.com/polygon/build/css/custom.css";*/
+/* the first, previous, next and last button
+in the datatable has a y-scroll. this code is
+to remove that scroll */
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.dataTables_wrapper > .row {
+	overflow: visible !important;
+}
+
+/* Overlay showing for Http Requests */
+ #overlay {
+   position: fixed;
+   display: none;
+   width: 100%;
+   height: 100%;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   background-color: rgba(0,0,0,0.5);
+   z-index: 2;
+   cursor: pointer;
+ }
+
+#overlay_text{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 50px;
+  color: white;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+}
+
+

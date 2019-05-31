@@ -1,0 +1,53 @@
+<div class="row">
+    <div class="col-md-12 col-xs-12">
+        <div class="x_panel">
+            <h2>{{ action_type }} Role</h2>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div *ngIf="loading_frm==false" class="spinner-lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+            <form *ngIf="loading_frm" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm">
+                <div class="row">
+                    <div class="col-sm-12 col-md-3">
+                        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && name.invalid }">
+                            <label>Name: <span style="color:red">*</span></label>
+                            <input type="text" class="form-control" name="name" placeholder="Name" [(ngModel)]="role.name"
+                                #name="ngModel" minlength="3" required />
+                            <span *ngIf="f.submitted && name.invalid" class="help-block">
+                                <span *ngIf="name.errors.required">Name is required</span>
+                                <span *ngIf="name.errors.minlength">Name must be at least 3 characters</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-3">
+                        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && status.invalid }">
+                            <label>Status: <span style="color:red">*</span></label>
+                            <select name="status" class="form-control" [(ngModel)]="role.status" #status="ngModel"
+                                required>
+                                <option disabled value="">---- Select ----</option>
+                                <option value="1">Publish </option>
+                                <option value="0">UnPublish</option>
+                            </select>
+                            <span *ngIf="f.submitted && status.invalid" class="help-block">
+                                <div *ngIf="status.errors.required">Status is required</div>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-6">
+                        <div *ngIf="errors" class="alert alert-danger">{{errors.error|json}}</div>
+                        <a class="btn btn-danger pull-right" [routerLink]="'/dashboard/roles/'"> <i class="fa fa-close"></i>Cancel</a>
+                        <button class="btn btn-primary pull-right" [disabled]="loading" type="submit"><i class="fa fa-save"></i> {{ action_type }}</button>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

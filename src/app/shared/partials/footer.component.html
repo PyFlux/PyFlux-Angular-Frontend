@@ -1,0 +1,32 @@
+<!-- footer content -->
+<div class="clearfix"></div>
+<footer style="padding: 10px 20px;">
+  <div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+    
+    <b>Internet Connection Status :
+      <span [ngStyle]="{'color':isConnected?'green':'red'}">
+        <i class="fa fa-eercast" aria-hidden="true"></i>
+        {{ status }}
+      </span>
+    </b>
+    
+  </div>
+
+  <!-- <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+    <button class="btn btn-info btn-xs">
+      Academic Year : {{academicYear.academic_name}}
+    </button>
+  </div> -->
+
+	<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 pull-right">
+    
+    <b><a href="http://vidhyadhan.in">
+      <img src="assets/images/vidhyadhan_logo.png" style="width: 15px;">
+     VidhyaDhan <a href="http://VidhyaDhan.in/history">Ver 0.3</a> - </a> <a href="http://donams.com">Do-NAM's Innovations</a></b>
+    
+	</div>
+	<!--<div class="clearfix"></div>-->
+  </div>
+</footer>
+<!-- /footer content -->

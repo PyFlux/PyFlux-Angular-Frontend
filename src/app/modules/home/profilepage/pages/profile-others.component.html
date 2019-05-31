@@ -1,0 +1,31 @@
+<div class="x_panel">
+    <div class="row x_title">
+        <div class="col-md-6">
+            <h2>My Profile</h2>
+        </div>
+        <div class="col-md-6">
+            <a class="btn btn-success pull-right" [routerLink]="'/home/profilepage/edit_userprofile/'">
+                <i class="fa fa-edit m-right-xs"></i> Edit Profile</a>
+        </div>
+    </div>
+    <div class="x_content">
+        <div class="col-md-3 col-sm-3 col-xs-12 profile_left">
+            <app-profilepage-sidebar [profile]="profile"></app-profilepage-sidebar>
+
+        </div>
+        <div class="col-md-9 col-sm-9 col-xs-12">
+            <app-profilepage-verify-topbar [profile]="profile"></app-profilepage-verify-topbar>
+            <tabset class="nav nav-tabs bar_tabs">
+
+                <tab heading="Personal Details" style="padding:15px">
+                    <app-profilepage-tab-personaldetails [profile]="profile"></app-profilepage-tab-personaldetails>
+                </tab>
+
+                <tab heading="Address" style="padding:15px">
+                    <app-profilepage-tab-address [profile]="profile"></app-profilepage-tab-address>
+                </tab>
+            </tabset>
+
+        </div>
+    </div>
+</div>

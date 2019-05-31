@@ -1,0 +1,32 @@
+<div class="x_panel">
+    <h2>General Settings</h2>
+</div>
+
+<div class="x_panel">
+    <div class="x_content">
+
+        <!-- <div class="row">
+            <div class="col-md-6"> -->
+                <table class="table table-striped">
+                    <tbody>
+                        <tr>
+                            <td style="vertical-align: middle"> Activate maintenance mode </td>
+                            <td>
+                                <app-ng-switchery [checked]="checked_items.indexOf('maintenance_mode') != -1" 
+                                (change)="checkValue($event, 'maintenance_mode')" size="switchery-sm"></app-ng-switchery>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: middle">Send SMS only to verified mobilenumber</td>
+                            <td>
+                                <app-ng-switchery (change)="checkValue($event,'sendsms_verifiednumbers_only')" size="switchery-sm">
+                                </app-ng-switchery>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            <!-- </div>
+        </div> -->
+    </div>
+</div>

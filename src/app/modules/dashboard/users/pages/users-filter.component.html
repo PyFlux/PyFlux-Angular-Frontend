@@ -1,0 +1,31 @@
+<div class="x_panel">
+    <div class="x_title">
+        Search Filters
+        <!-- <ul class="nav navbar-right panel_toolbox">
+            <li></li>
+            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+            </li>
+            <li><a class="close-link"><i class="fa fa-close"></i></a>
+            </li>
+        </ul> -->
+    </div>
+    <div class="x_content">
+        <form [formGroup]="filterForm">
+            <div class="row">
+                <div class="col-md-2 form-group">
+                    <label>Status</label>
+                    <select name="filter_status" class="form-control filter_status input-sm" formControlName="status">
+                        <option value="">--Select--</option>
+                        <option value="0">Unpublished</option>
+                        <option value="1">Published</option>
+                    </select>
+                </div>
+                <div class="col-md-2 col-md-offset-8">
+                    <button class="btn btn-warning btn-xs pull-right" (click)="clearFilter()"><i class="fa fa-times"></i> Clear Filter</button>
+                    <button class="btn btn-primary btn-xs pull-right" (click)="onSubmit()"><i class="fa fa-filter"></i> Apply Filter</button>
+                </div>
+            </div>
+        </form>
+        <!-- Filtered by <strong>{{filterForm.value|json}}</strong> -->
+    </div>
+</div>

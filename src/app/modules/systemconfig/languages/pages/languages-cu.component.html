@@ -1,0 +1,66 @@
+<div class="row">
+  <div class="col-md-12 col-xs-12">
+    <div class="x_panel">
+      <h2>{{action_type}} Languages</h2>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+      <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" enctype="multipart/form-data" novalidate>
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && language_name.invalid }">
+              <label>Languages:</label>
+              <span class="mandatory">
+                <font color="red"> * </font>
+              </span>
+              <input type="text" class="form-control" name="language_name" placeholder="Languages" [(ngModel)]="languages.language_name"
+                #language_name="ngModel" required pattern="^[A-Za-z_ ]{0,50}$" />
+              <span *ngIf="f.submitted && language_name.invalid" class="help-block">
+                <div *ngIf="language_name.errors.required">Languages is required</div>
+                <div *ngIf="language_name.errors.pattern">Must contain only Alphabets </div>
+              </span>
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && status.invalid }">
+              <label>Status</label>
+              <span class="mandatory">
+                <font color="red"> * </font>
+              </span>
+              <select name="status" class="form-control" [(ngModel)]="languages.status" #status="ngModel" required>
+                <option value="" disabled>--select-- </option>
+                <option value="1">Publish </option>
+                <option value="0">UnPublish</option>
+              </select>
+              <span *ngIf="f.submitted && status.invalid" class="help-block">
+                <div *ngIf="status.errors.required">Status is required</div>
+              </span>
+            </div>
+          </div>
+        </div>
+        <!--
+              <div *ngIf="loginErrors" class="alert alert-danger">{{loginErrors.error|json}}</div>
+              -->
+        <hr/>
+        <div class="row">
+          <div class="col-md-6 col-md-offset-6">
+
+            <div *ngIf="errors" class="alert alert-danger">{{errors.error|json}}</div>
+
+            <a class="btn btn-danger pull-right" [routerLink]="'/systemconfig/languages/'">
+              <i class="fa fa-close"></i> Cancel</a>
+            <button class="btn btn-primary pull-right" [disabled]="loading" type="submit"> <i class="fa fa-save"></i> {{ form_action }}
+            </button>
+
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

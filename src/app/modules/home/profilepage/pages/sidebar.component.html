@@ -1,0 +1,40 @@
+<div class="profile_img">
+    <div id="crop-avatar">
+        <img alt="Avatar" class="img-thumbnail img-responsive avatar-view"
+        style="display: block; border-radius:5%;height: 210px; margin: 0 auto;"
+            [src]="profile?.userprofile.media || 'assets/images/user.png'">
+    </div>
+  </div>
+  <h4 class="text-center">{{profile?.full_name}}</h4>
+  <p>Username: <code>{{profile?.username}}</code> </p>
+  <p *ngIf="profile?.student">Class: <code>{{profile.student.myclass_name }} {{ profile.student.myclass_division}}</code></p>
+  <p>
+    Email: <code>{{profile?.email}}</code>
+    <span class="text-success">
+      <i class="fa fa-check" *ngIf="profile?.userprofile.is_verified_email;else email_notverified"></i>
+      <!-- verified -->
+    </span>
+    <ng-template #email_notverified>
+      <span class="text-danger">
+      <i class="fa fa-times-circle text-danger"></i><br>
+        <!-- not verified -->
+      </span>
+      <!-- <a class="btn btn-default btn-xs" (click)="sendEmail(profile?.email)">Verify Email</a> -->
+    </ng-template>
+  </p>
+  <p *ngIf="profile?.userprofile.home_mobile_no">Home Phone: <code>{{ profile?.userprofile.home_mobile_no }}</code></p>
+  <p *ngIf="profile?.userprofile.personal_mobile_no">
+    Personal Phone: <code>{{ profile?.userprofile.personal_mobile_no }}</code>
+    <span class="text-success">
+      <i class="fa fa-check" *ngIf="profile?.userprofile.is_verified_mobile;else mobile_notverified"></i>
+      <!-- verified -->
+    </span>
+    <ng-template #mobile_notverified>
+      <span class="text-danger">
+      <i class="fa fa-times-circle text-danger"></i><br>
+        <!-- not verified -->
+      </span>
+      <!-- <a class="btn btn-default btn-xs" (click)="verifyMobile(profile?.userprofile.personal_mobile_no)">Verify Mobile</a> -->
+    </ng-template>
+  </p>
+  <p *ngIf="profile?.userprofile.office_mobile_no">Office Phone: <code>{{ profile?.userprofile.office_mobile_no }}</code></p>

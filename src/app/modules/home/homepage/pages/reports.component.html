@@ -1,0 +1,156 @@
+<div class="x_panel">
+
+    <app-homepage-tab-buttons></app-homepage-tab-buttons>
+
+    <div class="tab-content">
+        <div class="row">
+            <!-- 1. Student Progress Report -->
+            <div class="col-sm-12 col-md-6" *ngIf="widgets.indexOf('student_progress_report') != -1">
+
+                <div class="x_panel">
+                    <div class="row x_title">
+                        <div class="col-md-6">
+                            <h2>Student Exam Reports</h2>
+                        </div>
+                        <div class="col-md-6">
+                            <a class="btn btn-success btn-sm pull-right" [routerLink]="['/reports/studentreports/termwise/']">
+                                Term Wise Report</a>                                
+                        </div>
+                        <!-- <h2>Student Exams Results</h2>
+                        <div class="clearfix"></div> -->
+                    </div>
+
+                    <div class="x_content" *ngIf=" widgets_data['student_progress_report']['published_exams'].length > 0">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Exam Name</th>
+                                    <th>Academic Year</th>
+                                    <th>Class</th>
+                                    <th>View</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let markentries of widgets_data['student_progress_report']['published_exams']; let i = index">
+                                    <th>{{i+1}}</th>
+                                    <td>{{markentries.name}}</td>
+                                    <td>{{markentries.academicyear}}</td>
+                                    <td>{{markentries.class}}</td>
+                                    <td>
+                                        <a class="btn btn-xs btn-default" 
+                                        [routerLink]="['/reports/studentreports/view/', markentries.id]"
+                                        [queryParams]="{ studentid: widgets_data['student_progress_report']['studentid'] }">
+                                            View
+                                        </a>
+                                    </td>
+                                </tr>
+                                <!-- <tr><th colspan="5"><a class="btn btn-default pull-right" [routerLink]="['/reports/studentreports/termwise/']">Termwise</a></th></tr> -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <p *ngIf="widgets_data['student_progress_report']['published_exams'].length == 0">No Reports available.</p>
+
+                    <!-- <ng-template #no_student_reports>
+                        <div class="x_content">No Student Exam Reports</div>
+                    </ng-template> -->
+                </div>
+            </div>
+
+            <!-- 2. Teacher Exam Report -->
+            <div class="col-sm-12 col-md-6" *ngIf="widgets.indexOf('teacher_exam_report') != -1">
+
+                <div class="x_panel" >
+                    <div class="x_title">
+                        <h2>Exams Reports</h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content" *ngIf="widgets_data?.teacher_exam_report.length > 0">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Exam Name</th>
+                                    <th>Academic Year</th>
+                                    <th>Class</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let markentries of widgets_data['teacher_exam_report']['published_exams']; let i = index">
+                                    <th>{{i+1}}</th>
+                                    <td>{{markentries.name}}</td>
+                                    <td>{{markentries.academicyear}}</td>
+                                    <td>{{markentries.class}}</td>
+                                    <td><a class="btn btn-xs btn-default" [routerLink]="['/reports/studentreports/']" [queryParams]="{ markentryid: markentries.id }">view</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <p *ngIf="widgets_data['teacher_exam_report']['published_exams'].length == 0">No Reports available.</p>
+                    <!-- <ng-template #no_teacher_reports>
+                        <div class="x_content">No Teacher Exam Reports</div>
+                    </ng-template> -->
+                </div>
+                
+            </div>
+
+            <!-- 2. Attendence Report -->
+            <div class="col-sm-12 col-md-6" *ngIf="widgets.indexOf('student_attendance_report') != -1">
+
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Attendence Report</h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                            <div class="input-group-btn">
+                                <button class="btn btn-info" [routerLink]="['/reports/attendencereports']" type="button">
+                                    <i class="fa fa-eye" aria-hidden="true"></i> Attendence Report</button>
+                            </div>
+                        </div>
+
+                        <div style="margin-left:100px;" class=" col-xs-12 col-sm-12 col-md-2 col-lg-2 ">
+                            <div class="input-group-btn ">
+                                <button class="btn btn-info " [routerLink]="[ '/reports/studentconclusiveattendence']
+                    " type="button ">
+                                    <i class="fa fa-eye" aria-hidden="true"></i> Conclusive Attendence Report</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 2. Leave Applications -->
+            <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12" *ngIf="widgets.indexOf('leave_applications') != -1">
+                <div class="tile-stats">
+                    <div class="icon"><i class="fa fa-sign-out"></i>
+                    </div>
+                    <div class="count">0</div>
+            
+                    <h4>Leave Applications</h4>
+                    <button class="btn btn-info btn-xs" [routerLink]="['/reports/leaveapplication']" type="button">
+                        <i class="fa fa-eye" aria-hidden="true"></i> Leave Applications</button>
+                </div>
+            </div>
+            <!-- <div class="col-sm-12 col-md-6" *ngIf="widgets.indexOf('leave_applications') != -1">
+
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Leave Applications</h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                            <div class="input-group-btn">
+                                <button class="btn btn-info" [routerLink]="['/reports/leaveapplication']" type="button">
+                                    <i class="fa fa-eye" aria-hidden="true"></i> Leave Applications</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </div>
+</div>

@@ -1,0 +1,96 @@
+<div class="x_panel">
+    <ul class="nav nav-tabs bar_tabs">
+        <li role="presentation" [routerLinkActive]="['active']"><a [routerLink]="'/home/profilepage/edit_userprofile/'">Profile</a></li>
+        <li role="presentation" [routerLinkActive]="['active']"><a [routerLink]="'/home/profilepage/edit_address/'">Address</a></li>
+        <li role="presentation" [routerLinkActive]="['active']"><a [routerLink]="'/home/profilepage/edit_password/'">Password
+                Change</a></li>
+    </ul>
+    <div class="tab-content">
+
+        <form [formGroup]="addressForm" (ngSubmit)="onSubmit()" style="padding: 20px">
+            <div formArrayName="addresses">
+                <div [formGroupName]="i" *ngFor="let address of addresses.controls; let i=index">
+            
+                    <div class="row">
+                        <div class="col-md-4 col-xs-12 col-sm-12">
+                            <div class="form-group">
+                                <label>Address Type:</label>
+                                <select class="form-control" formControlName="addresstype">
+                                    <option value="">-- select -- </option>
+                                    <option value="p">Permanent Address</option>
+                                    <option value="t">Temporary Address</option>
+                                    <option value="o">Office Address</option>
+                                    <option value="h">Home Address</option>
+                                </select>
+                                <!-- <input type="text" formControlName="addresstype" class="form-control" autocomplete="off" placeholder="Address Type"
+                                 />   -->                       
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-xs-12 col-sm-12">
+                            <div class="form-group">
+
+                                <label>Address:</label>
+                                <input formControlName="address" class="form-control" placeholder="Address"/>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-xs-12 col-sm-12">
+                            <div class="form-group">
+                                <label>City:</label>
+                                <select class="form-control" formControlName="city">
+                                    <option value="">-- select -- </option>
+                                    <option *ngFor="let city of cities" [value]="city.id">{{city.city_name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 col-xs-12 col-sm-12">
+                            <div class="form-group">
+                                <label>District:</label>
+                                <select class="form-control" formControlName="district">
+                                    <option value="">-- select -- </option>
+                                    <option *ngFor="let district of districts" [value]="district.id">{{district.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-xs-12 col-sm-12">
+                            <div class="form-group">
+                                <label>State:</label>
+                                <select class="form-control" formControlName="state">
+                                    <option value="">-- select -- </option>
+                                    <option *ngFor="let state of states" [value]="state.id">{{state.state_name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-xs-12 col-sm-12">
+                            <div class="form-group">
+                                <label>Zip Code:</label>
+                                <input type="number" formControlName="zipcode" class="form-control" autocomplete="off" placeholder="Zip Code"
+                                 />                         
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <button class="btn btn-danger btn-sm" (click)="removeAddress(i)">
+                        <i class="fa fa-trash"></i> Remove</button>
+                    <hr>
+                </div>
+                <button class="btn btn-primary btn-sm pull-right" (click)="addAddress()" type="button">
+                <i class="fa fa-plus"></i> Add Address</button>
+                <div class="clearfix"></div>
+            </div>
+            
+            <hr>
+            <div class="pull-right">
+                
+                <a class="btn btn-danger pull-right" [routerLink]="'/home/profilepage/'">
+                    <i class="fa fa-close"></i> Close</a>
+                <button class="btn btn-primary pull-right" type="submit">
+                    <i class="fa fa-edit"></i> Update</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+

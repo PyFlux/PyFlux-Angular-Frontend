@@ -1,0 +1,101 @@
+<div class="row">
+  <div class="col-md-12 col-xs-12">
+    <div class="x_panel">
+      <h2>{{action_type}} SMS Config</h2>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+      <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" enctype="multipart/form-data" novalidate>
+
+        
+
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && per_day.invalid }">
+              <label>Per Day:</label>
+              <span class="mandatory">
+                <font color="red"> * </font>
+              </span>
+              <input type="text" class="form-control" name="per_day" placeholder="Per Day" [(ngModel)]="smsconfig.per_day" #per_day="ngModel"
+                required pattern="^[0-9]{0,50}$" />
+              <span *ngIf="f.submitted && per_day.invalid" class="help-block">
+                <div *ngIf="per_day.errors.required">Per Day is required</div>
+                <div *ngIf="per_day.errors.pattern">Must contain only numbers </div>
+              </span>
+            </div>
+          </div>
+
+
+          <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && per_month.invalid }">
+              <label>Per Month:</label>
+              <span class="mandatory">
+                <font color="red"> * </font>
+              </span>
+              <input type="text" class="form-control" name="per_month" placeholder="Per Month" [(ngModel)]="smsconfig.per_month" #per_month="ngModel"
+                required pattern="^[0-9]{0,50}$" />
+              <span *ngIf="f.submitted && per_month.invalid" class="help-block">
+                <div *ngIf="per_month.errors.pattern">Must contain only numbers </div>
+                <div *ngIf="per_month.errors.required">Per Month is required</div>
+              </span>
+            </div>
+          </div>
+
+
+          <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && api_key.invalid }">
+              <label>API Key:</label>
+              <span class="mandatory">
+                <font color="red"> * </font>
+              </span>
+              <input type="text" class="form-control" name="api_key" placeholder="API Key" [(ngModel)]="smsconfig.api_key" #api_key="ngModel"
+                required pattern="^[0-9]{0,50}$" />
+              <span *ngIf="f.submitted && api_key.invalid" class="help-block">
+                <div *ngIf="api_key.errors.pattern">Must contain only numbers </div>
+                <div *ngIf="api_key.errors.required">API Key is required</div>
+              </span>
+            </div>
+          </div>
+
+
+          <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && status.invalid }">
+              <label>Status</label>
+              <span class="mandatory">
+                <font color="red"> * </font>
+              </span>
+              <select name="status" class="form-control" [(ngModel)]="smsconfig.status" #status="ngModel" required>
+                <option value="" disabled>--select-- </option>
+                <option value="1">Publish </option>
+                <option value="0">UnPublish</option>
+              </select>
+              <span *ngIf="f.submitted && status.invalid" class="help-block">
+                <div *ngIf="status.errors.required">Status is required</div>
+              </span>
+            </div>
+          </div>
+        
+        <!--
+            <div *ngIf="loginErrors" class="alert alert-danger">{{loginErrors.error|json}}</div>
+            -->
+        <hr/>
+        <div class="row">
+          <div class="col-md-6 col-md-offset-6">
+
+            <div *ngIf="errors" class="alert alert-danger">{{errors.error|json}}</div>
+
+            <a class="btn btn-danger pull-right" [routerLink]="'/systemconfig/smsconfig/'">
+              <i class="fa fa-close"></i> Cancel</a>
+            <button class="btn btn-primary pull-right" [disabled]="loading" type="submit"> <i class="fa fa-save"></i> {{ form_action }}
+            </button>
+
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

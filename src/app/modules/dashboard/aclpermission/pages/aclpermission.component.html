@@ -1,0 +1,169 @@
+<div class="x_panel">
+  <h2>Manage Role's Privileges</h2>
+</div>
+
+
+<div class="x_panel">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group control-required">
+        <label>Role</label> <span class="error_red"> * </span>
+        <select [(ngModel)]="roleId" class="form-control" (change)="loadAclForm()">
+          <option *ngFor="let role of roles" [value]="role.id">{{role.name}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <!-- refresh page message -->
+      <div class="alert alert-info" role="alert" *ngIf="permissions_updated">
+        Permissions have been updated please reload the page to reflect the changes
+        <a class="btn btn-success btn-sm pull-right" href="javascript:window.location.reload(true)"><i class="fa fa-refresh"></i>  Reload</a>
+      </div>
+      
+    </div>
+  </div><hr>
+
+  <div class="x_panel acl_permissions_panel" *ngIf="loading_frm">
+    <!--<form></form> #AclPermissionForm="ngForm" (submit)="onSubmit()">-->
+    <fieldset [disabled]="loading">
+      <div class="row">
+        <div class="col-md-3 col-md-offset-9">
+          <div class="row">
+            <div class="col-md-2">View</div>
+            <div class="col-md-2">Add</div>
+            <div class="col-md-2">Edit</div>
+            <div class="col-md-2">Delete</div>
+            <div class="col-md-2">All</div>
+          </div>
+          <div class="row">
+            <div class="col-md-2">
+              <label class="icheck_checkboxcontainer checkbox-inline">
+                <input type="checkbox" (change)="OnCheckBoxViewAllChange($event)">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div class="col-md-2">
+              <label class="icheck_checkboxcontainer checkbox-inline">
+                <input type="checkbox" (change)="OnCheckBoxAddAllChange($event)">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div class="col-md-2">
+              <label class="icheck_checkboxcontainer checkbox-inline">
+                <input type="checkbox" (change)="OnCheckBoxEditAllChange($event)">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div class="col-md-2">
+              <label class="icheck_checkboxcontainer checkbox-inline">
+                <input type="checkbox" (change)="OnCheckBoxDeleteAllChange($event)">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div class="col-md-2">
+              <label class="icheck_checkboxcontainer checkbox-inline">
+                <input type="checkbox" (change)="OnCheckBoxAllChange($event)">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ++++++++++++++++++++++ Looping Code starts from here ++++++++++++++++++++++ -->
+      <div class="row" *ngFor="let menu of menus; let i = index">
+        <hr>
+        <div class="col-md-3">
+          <div class="form-group">
+            <label class="col-sm-6 control-label">
+              <i [className]="menu.icon"></i> {{menu.menu_text}}
+            </label>
+            <div class="col-sm-4">
+              <input type="number" [value]="menu.ordering" (blur)="onBlurMethod($event,menu)" class="form-control">
+            </div>
+            <div class="col-sm-2">
+              <label class="icheck_checkboxcontainer checkbox-inline">
+                <input type="checkbox" [checked]="menu.view" (change)="onSubmit($event,menu)" class="view_chk"><!--  [(ngModel)]="chk_menugroups_view[i]"-->
+                <span class="checkmark"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-9">
+          <!-- ++++++++++++++++++++++ Looping 2 Code starts from here ++++++++++++++++++++++ -->
+          <div class="row" style="padding-bottom: 10px" *ngFor="let submenu of menu.submenus; let j = index">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label class="col-sm-6 control-label">
+                  {{submenu.menu_text}}
+                </label>
+                <div class="col-sm-4">
+                  <input type="number" [value]="submenu.ordering" (blur)="onBlurMethod($event,submenu)" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                  <label class="icheck_checkboxcontainer checkbox-inline">
+                    <input type="checkbox" [checked]="submenu.view" (change)="onSubmit($event,submenu)" class="view_chk">
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+              </div>
+
+            </div>
+            <div class="col-md-8">
+              <!-- ++++++++++++++++++++++ Looping 3 Code starts from here ++++++++++++++++++++++ -->
+              <div style="padding-bottom: 10px" *ngFor="let subsubmenu of submenu.subsubmenus; let k = index">
+                <div class="row">
+                  <div class="col-md-4">
+                    <label class="control-label">
+                      {{subsubmenu.menu_text}}
+                    </label>
+                  </div>
+                  <div class="col-md-2">
+                    <input type="number" [value]="subsubmenu.ordering" (blur)="onBlurMethod($event,subsubmenu)" class="form-control">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="icheck_checkboxcontainer checkbox-inline">
+                      <!--https://stackoverflow.com/a/41205290/2351696-->
+                      <input type="checkbox" [checked]="subsubmenu.view" (change)="onSubmit($event,subsubmenu)" class="view_chk">
+                      <span class="checkmark"></span>
+                    </label>
+                    <label class="icheck_checkboxcontainer checkbox-inline">
+                      <input type="checkbox" [checked]="subsubmenu.add" (change)="onSubmit($event,subsubmenu,'add')" class="add_chk">
+                      <span class="checkmark"></span>
+                    </label>
+                    <label class="icheck_checkboxcontainer checkbox-inline">
+                      <input type="checkbox" [checked]="subsubmenu.edit" (change)="onSubmit($event,subsubmenu,'edit')" class="edit_chk">
+                      <span class="checkmark"></span>
+                    </label>
+                    <label class="icheck_checkboxcontainer checkbox-inline">
+                      <input type="checkbox" [checked]="subsubmenu.trash" (change)="onSubmit($event,subsubmenu,'delete')" class="delete_chk">
+                      <span class="checkmark"></span>
+                    </label>
+                    <label class="icheck_checkboxcontainer checkbox-inline">
+                      <input type="checkbox" class="chk_row" (change)="OnCheckBoxRowChange($event,subsubmenu)">
+                      <span class="checkmark"></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <!-- ng for submenu -->
+            </div>
+          </div>
+          <!-- ng for menu -->
+        </div>
+      </div>
+    </fieldset>
+
+
+    <hr>
+    <!--
+  <div class="row">
+      <div class="col-md-6 col-md-offset-6">
+          <div class="form-group control-required">
+              <input type="submit" name="submit" value="Submit" class="btn btn-primary pull-right">
+          </div>
+      </div>
+  </div>
+  </form>-->
+    <br>
+  </div>

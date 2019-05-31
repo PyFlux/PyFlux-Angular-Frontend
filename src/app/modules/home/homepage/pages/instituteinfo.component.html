@@ -1,0 +1,75 @@
+<!-- <div class="theme_blue" > -->
+    
+    <div class="x_panel" >
+        <app-homepage-tab-buttons></app-homepage-tab-buttons>
+        <div class="x_title" *ngIf="organization?.length > null">
+            <!-- <h2> {{ organization?.org_name }} </h2> -->
+            <div class="clearfix"></div>
+        </div>
+        
+        <div class="x_content"  >
+            <!-- <div class="col-md-12 no-padding">
+                <div class="tile-stats no-border no-padding no-margin">
+                    <div class="col-md-3 text-center">
+                        <img src="images/school.png" alt="logo" style="width: 100px;">
+                    </div>
+                    <div class="col-md-9 no-padding" style="font-size: 15px"></div>
+                </div>
+            </div> -->
+            <div class="clearfix"></div>
+            <div class="ht10"></div>
+            <div class="col-md-12 no-padding">
+                <div class="col-md-6 padding_sm">
+                    <div class="inst_img">
+                        <img class="img-responsive center-block" src="{{organization?.institute_image ? organization.institute_image : 'assets/images/user.png'}}"
+                            style="margin:0 auto;">
+                    </div>
+                </div>
+                <div class="col-md-6 padding_sm">
+
+
+
+                    <h3 style="margin-top: -5px;" class="text-primary">{{ organization?.org_name }}</h3>
+
+                    <p [innerHTML] = "organization?.institute_info | slice:0:833">
+
+                        <!-- {{organization?.institute_info | slice:0:833}} -->
+                    </p>
+                </div>
+                <div class="clearfix"></div>
+                <div class="ht10"></div>
+                <div class="col-md-12 padding_sm">
+                    <p [innerHTML] = "organization?.institute_info | slice:833">
+                        <!-- {{ (organization.institute_info>1000)? (organization.institute_info | slice:-70):(organization.institute_info) }} -->
+                        <!-- {{ (organization.institute_info>900)? (organization.institute_info | slice:833:organization.institute_info.length)}} -->
+                        <!-- {{organization?.institute_info | slice:833}} -->
+                        <!-- {{organization.institute_info}}[-4]: '{{organization.institute_info | slice:-700}} -->
+                    </p>
+                </div>
+                <div class="clearfix"></div>
+                <hr>
+
+                <div class="col-md-12" style="margin-bottom: 50px;">
+                    <div class="col-md-6 padding_sm">
+                        <div *ngIf="organization?.org_website">
+
+                            <p>
+                                <b>Website</b> :
+                                <a href="#">{{organization?.org_website }}</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-right padding_sm">
+                        <div *ngIf="organization?.org_phone">
+                            <p>
+                                <b>Phone</b> : {{ organization?.org_phone }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p *ngIf="organization?.length === null">No information available.</p>
+    </div>
+   
+<!-- </div> -->

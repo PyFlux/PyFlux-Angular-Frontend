@@ -1,0 +1,45 @@
+<div class="x_panel">
+    <h2>Manage Widget Permissions</h2>
+</div>
+
+<div class="x_panel">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group control-required">
+                <label>Role</label> <span class="error_red"> * </span>
+                <select class="form-control" [(ngModel)]="roleId" (change)="onRoleChange()">
+                    <option *ngFor="let role of roles" [value]="role.id">{{role.name}}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row" *ngIf="roleId">
+        <div class="col-md-6 col-sm-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2>Role's Widgets</h2>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item" *ngFor="let widget of widgets">
+                        <label class="icheck_checkboxcontainer checkbox-inline">
+                            <input type="checkbox" (change)="changed($event,widget.id)" [checked]="rolewidgets?.indexOf(widget.id) != -1">
+                            <span class="checkmark"></span>
+                            {{widget.name}}
+                        </label>
+                    </li>
+                </ul>
+                <div class="panel-footer">
+                    <button class="btn btn-default" (click)="saveRolewidgets()">Save Widgets</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <ng-select [items]="widgets" [multiple]="true" [closeOnSelect]="false" [searchable]="false" bindLabel="name"
+            bindValue="id" placeholder="Select Widgets" [(ngModel)]="rolewidgets">
+            <ng-template ng-option-tmp let-item="item" let-item$="item$">
+                <input type="checkbox" [ngModel]="item$.selected"/> {{item.name}}
+            </ng-template>
+        </ng-select> -->
+</div>

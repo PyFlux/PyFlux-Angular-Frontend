@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="col-md-6 col-xs-12">
+    <div class="x_panel">
+      <h5>Manage {{subsubmenu?.menu_text}}</h5>
+    </div>
+  </div>
+  <div class="col-md-6 col-xs-12">
+    <!--<div *ngIf="toolbar_loading; else elseBlock">{{value}}</div>
+    <ng-template #elseBlock>...</ng-template>-->
+
+    <div class="x_panel" *ngIf="toolbar_loading==false">
+      <div class="pull-right" *ngIf="filter_trashed=='1'; else elseBlock">
+        <button (click)="toolbarAction('restore')" class="btn btn-sm btn-info material-ripple" type="button"><i
+          class="fa fa-backward"></i>
+          Restore
+        </button>
+        <!--<button (click)="toolbarAction('forcedelete')" class="btn btn-sm btn-danger material-ripple" type="button"><i class="fa fa-trash"></i>-->
+        <!--Force Delete</button>-->
+      </div>
+      <ng-template #elseBlock>
+        <div class="pull-right">
+          <!--<button *ngIf="subsubmenu.add" class="btn btn-success" [disabled]="loading" type="button" [routerLink]="subsubmenu.link+'/add'" [queryParams]="{ subsubmenu_id: subsubmenu.id }"><i class="fa fa-user-plus"></i> Add</button>-->
+          <!-- <button *ngIf="subsubmenu.view" class="btn btn-sm btn-success material-ripple" [disabled]="toolbar_loading"
+                  type="button" (click)="viewrecord(subsubmenu.link)"><i
+            class="fa fa-eye"></i> View
+          </button> -->
+          <button *ngIf="subsubmenu.add" class="btn btn-sm btn-success material-ripple" [disabled]="toolbar_loading"
+                  type="button" [routerLink]="subsubmenu.link+'/add'"><i
+            class="fa fa-plus"></i> Add
+          </button>
+          <button *ngIf="subsubmenu.edit" class="btn btn-sm btn-primary material-ripple" type="button"
+                  (click)="editrecord(subsubmenu.link)"><i
+            class="fa fa-edit"></i> Edit
+          </button>
+          <button *ngIf="subsubmenu.edit" class="btn btn-sm btn-info material-ripple" type="button"
+                  (click)="toolbarAction('enable')"><i
+            class="fa fa-check"></i> Publish
+          </button>
+          <button *ngIf="subsubmenu.edit" class="btn btn-sm btn-warning material-ripple" type="button"
+                  (click)="toolbarAction('disable')"><i
+            class="fa fa-times"></i> Unpublish
+          </button>
+          <button *ngIf="subsubmenu.trash" class="btn btn-sm btn-danger material-ripple" type="button"
+                  (click)="toolbarAction('remove')"><i
+            class="fa fa-trash"></i> Trash
+          </button>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>

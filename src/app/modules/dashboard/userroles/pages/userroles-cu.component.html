@@ -1,0 +1,52 @@
+<div class="row">
+    <div class="col-md-12 col-xs-12">
+        <div class="x_panel">
+            <h2>{{ action_type }} User Roles</h2>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+
+        <form *ngIf="loading_frm" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && user.invalid }">
+                        <label>User: <span style="color:red">*</span></label>
+                        <select name="user" class="form-control" [(ngModel)]="userrole.user" #user="ngModel" required>
+                            <option *ngFor="let user of users" [value]="user.id">{{user.first_name}} ({{user.username}})</option>
+                        </select>
+                        <span *ngIf="f.submitted && user.invalid" class="help-block">
+                            <span *ngIf="user.errors.required">User is required</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && role.invalid }">
+                        <label>Role: <span style="color:red">*</span></label>
+                        <select name="role" class="form-control" [(ngModel)]="userrole.role" #role="ngModel" required>
+                            <option *ngFor="let role of roles" [value]="role.id">{{role.name}}</option>
+                        </select>
+                        <span *ngIf="f.submitted && role.invalid" class="help-block">
+                            <span *ngIf="role.errors.required">Role is required</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div class="row">
+                <div class="col-md-6 col-md-offset-6">
+
+                    <div *ngIf="errors" class="alert alert-danger">{{errors.error|json}}</div>
+                    <!--<a class="btn btn-warning pull-right" [routerLink]="'/controlpanel/users/'"> Cancel</a>-->
+                    <a class="btn btn-danger pull-right" [routerLink]="'/dashboard/userroles/'"><i class="fa fa-close"></i> Cancel</a>
+                    <button class="btn btn-primary pull-right" [disabled]="loading" type="submit"><i class="fa fa-save"></i> {{ action_type }} Userroles </button>
+
+                </div>
+            </div>
+        </form>
+    </div>
+  </div>
+</div>

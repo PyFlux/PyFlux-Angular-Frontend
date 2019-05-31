@@ -1,0 +1,59 @@
+<div class="x_panel">
+  <h2>Menu Management</h2>
+</div>
+
+<div class="x_panel">
+  <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm">
+    <div class="row">
+      <div class="col-md-12">
+        <p><strong>First You need to update <pre>dashboard/sync_dashboard_menu.py</pre></strong></p>
+        
+        Example:
+        <pre ngNonBindable>
+&#123;	
+  "menu_text": "Humman Resource",
+  "menu_icon": "fa fa-book",
+  "sub_menu": 
+  [
+    &#123;	
+        "menu_text": "Humman Resource",
+        "sub_sub_menu":
+        [
+            &#123;"link": "/hr/designation", "menu_text": "Designation"&#125;,
+            &#123;"link": "/hr/employee", "menu_text": "Employee"&#125;,
+            &#123;"link": "/hr/exportemployees","menu_text": "Export Employee" &#125;
+        ]
+    &#125;,
+    &#123;	
+        "menu_text": "Employee Config",
+        "sub_sub_menu":
+        [
+            &#123;"link": "/hr/holiday", "menu_text": "Holiday"&#125; 
+        ]
+    &#125;
+  ]
+&#125;
+        </pre>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && menu.invalid }">
+          <label>Menus: <span style="color:red">*</span></label>
+          <textarea rows="10" required="required" name="menu" 
+            class="form-control" [(ngModel)]="menus" style="font-family: 'Courier New'"
+            #menu="ngModel"></textarea>
+          <span *ngIf="f.submitted && menu.invalid" class="help-block">
+              <span *ngIf="menu.errors.required">Menus is required</span>
+          </span>
+        </div>
+      </div>
+      
+    </div>
+    <!-- <ngx-json-viewer [json]="JSON.parse(menus)"></ngx-json-viewer> -->
+    <hr />
+    <div class="row">
+      <div class="col-md-6 col-md-offset-6">
+        <!-- <div *ngIf="errors" class="alert alert-danger">{{errors.error|json}}</div> -->
+        <button class="btn btn-primary pull-right" type="submit">Add Menu</button>
+      </div>
+    </div>
+  </form>
+
+</div>

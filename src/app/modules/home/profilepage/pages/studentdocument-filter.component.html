@@ -1,0 +1,26 @@
+<div class="x_panel">
+    <div class="x_title">
+        Search Filters
+    </div>
+    <div class="x_content">
+        <form [formGroup]="filterForm">
+            <div class="row">
+                <div class="col-md-2 form-group">
+                    <label>File Name</label>
+                    <select name="filename" class="form-control category input-sm" id="filename" name="filename">
+                        <option value="">---- Select ----</option>
+                        <option *ngFor="let document of documents" [value]="document.filename">{{document.filename}}</option>
+                    </select>
+                </div>
+                <div class="col-md-4 col-md-offset-8">
+                    <button class="btn btn-warning btn-xs pull-right" (click)="clearFilter()"><i class="fa fa-times"></i>
+                        Clear Filter</button>
+                    <button class="btn btn-primary btn-xs pull-right" (click)="onSubmit()"><i class="fa fa-filter"></i> Apply
+                        Filter
+                    </button>
+                </div>
+            </div>
+        </form>
+        <!-- Filtered by <strong>{{filterForm.value|json}}</strong> -->
+    </div>
+</div>

@@ -1,0 +1,67 @@
+<div class="col-md-3 left_col">
+  <!--menu_fixed style="overflow-y:scroll"-->
+  <div class="left_col scroll-view">
+    <div class="navbar nav_title" style="border: 0;">
+      <a [routerLink]="'/'" class="site_title material-ripple">
+          <img *ngIf="org_details?.org_logo;else noimage" src="{{org_details?.org_logo }}" height="40" width="40" style="border-radius:50%">
+          <ng-template #noimage><i class="fa fa-home" ></i></ng-template>
+        <span> VidhyaDhan </span>
+      </a>
+    </div>
+    <!-- <div class="clearfix"></div> -->
+    <br />
+
+    <!-- sidebar menu -->
+    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+      <div class="menu_section">
+        <h3>Academic Year : {{academicYear?.academic_name}}</h3>
+        <ng-template #loadingBlock>
+          <div class="loader"></div>
+        </ng-template>
+
+        <ul class="nav side-menu" *ngIf="loading==false; else loadingBlock">
+
+          <!-- loop1 -->
+          <li *ngFor="let menu of menus">
+            <a class="material-ripple">
+              <i [className]="menu.icon"></i> {{menu.menu_text}}
+              <span class="fa fa-chevron-down"></span>
+            </a>
+            <!-- loop2 -->
+            <ul class="nav child_menu">
+              <li *ngFor="let submenu of menu.submenus">
+                <a class="material-ripple">{{submenu.menu_text}}
+                  <span class="fa fa-chevron-down"></span>
+                </a>
+                <ul class="nav child_menu">
+                  <!-- loop3 -->
+                  <li *ngFor="let subsubmenu of submenu.subsubmenus">
+                    <a class="material-ripple" data-ripple-color="#CB8962" (click)="menuClicked(subsubmenu.link,subsubmenu.id)">{{subsubmenu.menu_text}}</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- /sidebar menu -->
+
+    <!-- /menu footer buttons -->
+    <div class="sidebar-footer hidden-small">
+      <a data-toggle="tooltip" data-placement="top" title="Settings">
+        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+      </a>
+      <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+        <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+      </a>
+      <a data-toggle="tooltip" data-placement="top" title="Lock">
+        <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+      </a>
+      <a data-toggle="tooltip" data-placement="top" title="Logout" [routerLink]="'/logout'">
+        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+      </a>
+    </div><!-- /menu footer buttons -->
+  </div>
+</div>

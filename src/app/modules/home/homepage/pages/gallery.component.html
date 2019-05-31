@@ -1,0 +1,31 @@
+<!-- <div class="theme_blue"> -->
+    <div class="x_panel">
+        <app-homepage-tab-buttons></app-homepage-tab-buttons>
+        <div class="x_title">
+            <h2> Gallery </h2>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content" *ngIf="gallery?.length > 0">
+            <!-- <div class="col-md-12 no-padding">
+                <div class="tile-stats no-border no-padding no-margin">
+                    <div class="col-md-3 text-center">
+                        <img src="images/school.png" alt="logo" style="width: 100px;">
+                    </div>
+                    <div class="col-md-9 no-padding" style="font-size: 15px"></div>
+                </div>
+            </div> -->
+            <div class="clearfix"></div>
+            <div class="ht10"></div>
+            <div style="margin-top:20px">
+                <div *ngFor="let image of gallery">
+                    <div class="right col-xs-2 text-center">
+                        <img src="{{image.gallery_image ? image.gallery_image : 'assets/images/user.png'}}" alt=""
+                            class="img-rounded" height="100px" width="100px">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p *ngIf="gallery?.length === 0">No information available.</p>
+
+    </div>
+<!-- </div> -->

@@ -1,0 +1,34 @@
+<!--<div class="x_panel">
+  <form method="get">
+    <div class="row">
+      <div class="col-md-2 form-group">
+        <label>Status</label>
+        <select name="filter_status" class="form-control filter_status input-sm" (change)="filterStatus($event)">
+          <option value="">--Select--</option>
+          <option value="0">Unpublished</option>
+          <option value="1">Published</option>
+        </select>
+      </div>
+    </div>
+  </form>
+  <p *ngIf="filter">Filtered by <strong>{{filter}}</strong></p>
+</div>-->
+
+<div class="x_panel">
+  <form id="frm_datatable_chkboxes">
+    <table class="table table-striped table-bordered datatable" datatable [dtOptions]="dtOptions">
+      <thead>
+        <tr>
+          <th style="width: 40px;text-align: center">
+            <label class="icheck_checkboxcontainer checkbox-inline" style="text-align: center">
+              <input type="checkbox" id="checkall">
+              <span class="checkmark"></span>
+            </label>
+          </th>
+          <!--skip first-->
+          <th *ngFor="let field of fields | slice:1" [ngClass]="{'status': field==='Status'}">{{field}}</th>
+        </tr>
+      </thead>
+    </table>
+  </form>
+</div>

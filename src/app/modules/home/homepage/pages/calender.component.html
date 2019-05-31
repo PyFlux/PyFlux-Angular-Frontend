@@ -1,0 +1,32 @@
+<div class="x_panel">
+
+  <app-homepage-tab-buttons></app-homepage-tab-buttons>
+
+  <div class="tab-content">
+    <div *ngIf="calendarOptions" class="col-md-10 col-sm-8 col-xs-6">
+      <ng-fullcalendar #ucCalendar [options]="calendarOptions" (eventClick)="eventClick($event.detail)"></ng-fullcalendar>
+    </div>
+
+    <div class="col-md-2 col-sm-4 col-xs-6">
+      <span *ngFor="let eventtype of eventtypes">
+        <i class="fa fa-square" aria-hidden="true" [ngStyle]="{'color': eventtype.color_code}"></i>
+        {{eventtype.type_name}}
+        <br>
+      </span>
+
+      <hr style="border-top: dotted 1px;" />
+      <b style="color: #90111A">Today's Birthdays</b> <br>
+
+      <div *ngIf="userbirthdays?.length > 0">
+        <span *ngFor="let userbirthday of userbirthdays">
+          <i class="fa fa-birthday-cake" aria-hidden="true" style="color: red"></i> {{userbirthday.student_name}}
+          ({{userbirthday.class_name}}{{userbirthday.divison}}) <br>
+        </span>
+      </div>
+
+      <div *ngIf="userbirthdays?.length <= 0">
+        No Birthday's today!
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,95 @@
+
+@import "../../../assets/particles/css/particles.css";
+
+/*login css starts here*/
+
+body.login{
+  background: #FFF;
+}
+.particle_wrapper{
+  background: #3498DB ;
+  height: 100vh;
+}
+.login_box {
+  width: 350px;
+  background: #FFF;
+  box-shadow: 0 0 6px #CCC;
+  height: 420px;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.login_left_box {
+  position: absolute;
+  width: 50%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  color: #FFF;
+}
+.ht10{
+  height: 10px;
+}
+
+/*login css ends here*/
+
+#graph_container{
+  width: 700px;
+  margin: auto;
+}
+.x_title h2 {
+  font-weight: 700;
+  color: #3498DB  !important;
+  -webkit-print-color-adjust: exact;
+}
+.no-margin{
+  margin: 0 !important;
+}
+.no-padding{
+  padding: 0 !important;
+}
+
+.text-danger {
+  color: #a94442;
+  -webkit-print-color-adjust: exact;
+}
+.text-success {
+  color: #3c763d;
+  -webkit-print-color-adjust: exact;
+}
+.bg-blue {
+  background: #3498DB!important;
+  border: 1px solid #3498DB!important;
+  color: #fff;
+  -webkit-print-color-adjust: exact;
+}
+.bg-orange {
+  background: #F39C12!important;
+  border: 1px solid #F39C12!important;
+  color: #fff;
+  -webkit-print-color-adjust: exact;
+}
+.bg-green {
+  background: #1ABB9C!important;
+  border: 1px solid #1ABB9C!important;
+  color: #fff;
+  -webkit-print-color-adjust: exact;
+}
+.btn-success.active, .btn-success:active, .btn-success:focus, .btn-success:hover, .open .dropdown-toggle.btn-success {
+  background: #169F85;
+  -webkit-print-color-adjust: exact;
+}
+
+@media screen and (max-width: 950px){
+  .particle_wrapper{
+    display: none;
+  }
+}
+
+
+.full-width {
+  width: 100%;
+}
