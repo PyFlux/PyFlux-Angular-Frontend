@@ -4,13 +4,13 @@ Deployment Apache
 apache config
 -------------
 
-`vim /etc/apache2/sites-available/dev.vidhyadhan.in_frontend.conf`::
+`vim /etc/apache2/sites-available/pyflux_frontend.conf`::
 
     <VirtualHost *:80>
-        ServerName dev.vidhyadhan.in
+        ServerName pyflux.in
             #referring the user to the recipes application
-            DocumentRoot /var/www/dev.vidhyadhan.in/frontend
-            <Directory /var/www/dev.vidhyadhan.in/frontend>
+            DocumentRoot /var/www/pyflux/frontend
+            <Directory /var/www/pylux/frontend>
                     Options Indexes FollowSymLinks MultiViews
                     AllowOverride All
                     Order allow,deny
@@ -19,14 +19,14 @@ apache config
                     # default start page (in /apache2-default) when you go to /
                     #RedirectMatch ^/$ /apache2-default/
             </Directory>
-            ErrorLog /var/www/dev.vidhyadhan.in/frontend/error.log
-            CustomLog /var/www/dev.vidhyadhan.in/frontend/access.log combined
+            ErrorLog /var/www/pyflux/frontend/error.log
+            CustomLog /var/www/pyflux/frontend/access.log combined
     </VirtualHost>
 
 Enable the site::
 
-    a2ensite  dev.vidhyadhan.in_frontend.conf
-    
+    a2ensite  pyflux_frontend.conf
+
 reloading pages, besides root
 -----------------------------
 

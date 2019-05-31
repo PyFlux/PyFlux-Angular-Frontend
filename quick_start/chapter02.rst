@@ -14,16 +14,16 @@ Create new Angular App
 ::
 
 	$ nvm use node
-	$ ng new vidhyadhan
-	$ cd vidhyadhan
+	$ ng new pyflux
+	$ cd pyflux
 	$ ng serve --open
 
 or Clone existing app
 ---------------------
 ::
 
-	$ git clone git@gitlab.com:DonamsInnovations/VidhyaDhan-Angular.git
-	$ cd VidhyaDhan-Angular
+	$ git clone
+	$ cd Pyflux-Angular
 	$ npm install
 	$ ng serve --open
 
@@ -88,7 +88,7 @@ REST api http requests
 ======================
 
 edit file `app/app.module.ts` to add the `HttpClientModule` module(import the `HttpClientModule` then add `HttpClientModule` to the imports array)::
-	
+
 	import { HttpClientModule } from  '@angular/common/http';
 	...
 	imports: [
@@ -146,7 +146,7 @@ Next, open `app/courses/courses.component.ts` and inject the `ApiService` then c
 
 Now let's display the courses in the template. Open `app/courses/courses.component.html` and add the following code::
 
-	<h1>Courses </h1>	
+	<h1>Courses </h1>
 	<table  style="width:100%">
 	<tr>
 	    <th>Course Name</th>
@@ -168,7 +168,7 @@ Creating Courses HTTP POST Request Example
 ------------------------------------------
 
 Open `app/api.service.ts` and add a method::
-	
+
 	export class ApiService {
 		...
 		createCourse(course){
@@ -196,7 +196,7 @@ open `app/courses/courses.component.ts` and update the following code::
 
 Next open `app/courses/courses.component.html` and add a button to call the method to create a course::
 
-	<h1>Courses </h1>	
+	<h1>Courses </h1>
 	<h2>Create Course</h2>
 	<button (click)="createCourse()">Create Course</button><hr>
 	...

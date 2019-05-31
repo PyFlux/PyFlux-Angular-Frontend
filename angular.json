@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "vidhyadhan": {
+    "pyflux": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/vidhyadhan",
+            "outputPath": "dist/pyflux",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -81,18 +81,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "vidhyadhan:build"
+            "browserTarget": "pyflux:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "vidhyadhan:build:production"
+              "browserTarget": "pyflux:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "vidhyadhan:build"
+            "browserTarget": "pyflux:build"
           }
         },
         "test": {
@@ -126,7 +126,7 @@
         }
       }
     },
-    "vidhyadhan-e2e": {
+    "pyflux-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -134,11 +134,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "vidhyadhan:serve"
+            "devServerTarget": "pyflux:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "vidhyadhan:serve:production"
+              "devServerTarget": "pyflux:serve:production"
             }
           }
         },
@@ -154,5 +154,5 @@
       }
     }
   },
-  "defaultProject": "vidhyadhan"
+  "defaultProject": "pyflux"
 }

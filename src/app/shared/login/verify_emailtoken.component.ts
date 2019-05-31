@@ -14,7 +14,7 @@ import { Router, ActivatedRoute } from '@angular/router';
         </div>
         <div class="panel-body">
           <p>{{message}}</p>
-          &mdash; Vidhyadhan
+          &mdash; PyFlux
 				</div>
 			</div>
 		</div>

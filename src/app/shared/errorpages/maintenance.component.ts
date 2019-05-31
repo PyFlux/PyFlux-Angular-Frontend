@@ -11,7 +11,7 @@ import {Component} from '@angular/core';
         but we&rsquo;re performing some maintenance at the moment.
         If you need to you can always <a href="mailto:#">contact us</a>,
         otherwise we&rsquo;ll be back online shortly!</p>
-        <p>&mdash; Vidhyadhan
+        <p>&mdash; PyFlux
       </p>
   </div>
 </article>
