@@ -1,27 +1,24 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
-import { EmployeeCuComponent } from '../modules/hr/employee/components/employee-cu.component';
-import { NgSelectModule } from '@ng-select/ng-select';
-import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import {NgSelectModule} from '@ng-select/ng-select';
+import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
 
 @NgModule({
   imports: [
-    CommonModule, 
-    RouterModule, 
+    CommonModule,
+    RouterModule,
     FormsModule,
     NgSelectModule,
     BsDatepickerModule.forRoot(),
-    ReactiveFormsModule,    
+    ReactiveFormsModule,
   ],
   declarations: [
     EmployeeCuComponent
   ],
-  exports: [
-    EmployeeCuComponent
-  ]
+  exports: []
 })
 
 

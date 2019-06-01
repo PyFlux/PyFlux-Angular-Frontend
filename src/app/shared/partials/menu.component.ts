@@ -1,9 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-// import { MenuService } from './menu.service';
-import { AclpermissionService } from '../../modules/dashboard/aclpermission/aclpermission.service';
-import { Router } from '@angular/router';
-import { OrganizationService } from '../../modules/systemconfig/organization/organization.service';
-import { AcademicYearService } from '../../modules/academics/academicyear/academicyear.service';
+import {Component, OnInit} from '@angular/core';
+import {AclpermissionService} from '../../modules/dashboard/aclpermission/aclpermission.service';
+import {Router} from '@angular/router';
+import {OrganizationService} from '../../modules/systemconfig/organization/organization.service';
 
 
 @Component({
@@ -18,20 +16,20 @@ export class MenuComponent implements OnInit {
   academicYear: any;
 
   constructor(private aclpermissionService: AclpermissionService,
-    private organizationService: OrganizationService,
-    private academicYearService: AcademicYearService,
-    private router: Router) { }
+              private organizationService: OrganizationService,
+              private router: Router) {
+  }
+
   public getorganizationdetails() {
     this.organizationService.getactiveorganization().subscribe((data: Array<object>) => {
       this.org_details = data[0];
     });
   }
+
   ngOnInit() {
     this.loading = true;
     this.getorganizationdetails();
-    this.academicYearService.getAcademicYears().subscribe((data: any) => {
-      this.academicYear = data[0];
-    });
+
 
     // $('img[src=""]').hide();
     const username = localStorage.getItem('username');
@@ -43,6 +41,7 @@ export class MenuComponent implements OnInit {
         this.loading = false;
       });
   }
+
   menuClicked(link, subsubmenuid) {
     sessionStorage.setItem('subsubmenu_id', subsubmenuid);
     this.router.navigate([link]);

@@ -5,8 +5,6 @@ import {ToolbarComponent} from './partials/toolbar.component';
 import {DataTableComponent} from './datatables/datatable.component';
 import {DataTablesModule} from 'angular-datatables';
 import {ToolbarDatatableComponent} from './toolbar_datatable.component';
-import { TimetablesViewComponent } from '../modules/timetable/timetables/components/timetables-view.component';
-import { TimetablesTeacherComponent } from '../modules/timetable/timetables/components/timetables-teacher.component';
 import { MatButtonModule, MatInputModule ,MatDatepickerModule,MatNativeDateModule,MatSelectModule,MatIconModule} from '@angular/material';
 
 @NgModule({
@@ -21,15 +19,11 @@ import { MatButtonModule, MatInputModule ,MatDatepickerModule,MatNativeDateModul
     ToolbarComponent,
     DataTableComponent,
     ToolbarDatatableComponent,
-    TimetablesViewComponent,
-    TimetablesTeacherComponent
   ],
   exports: [
     ToolbarComponent,
     DataTableComponent,
     ToolbarDatatableComponent,
-    TimetablesViewComponent,
-    TimetablesTeacherComponent
   ]
 })
 
