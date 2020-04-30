@@ -38,7 +38,7 @@
     "gentelella": "^1.4.0",
     "highcharts": "^6.2.0",
     "highcharts-angular": "^2.3.1",
-    "jquery": "^3.3.1",
+    "jquery": "^3.5.0",
     "moment": "^2.23.0",
     "ng-connection-service": "^1.0.4",
     "ng-fullcalendar": "^1.6.2",
